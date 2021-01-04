@@ -1,0 +1,4 @@
+#!/bin/sh
+export GOPROJECTROOT="$(pwd)"
+go run karhooAPIs.com
+
