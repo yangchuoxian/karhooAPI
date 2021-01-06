@@ -35,7 +35,7 @@ func getAccessToken() (*util.AuthInfo, error) {
 	}
 	decoder := json.NewDecoder(res.Body)
 	defer res.Body.Close()
-	if res.StatusCode == http.StatusOK {
+	if res.StatusCode == http.StatusCreated {
 		var a *util.AuthInfo
 		err = decoder.Decode(&a)
 		if err != nil {
@@ -66,7 +66,7 @@ func refreshAccessTokenIfExpired(a *util.AuthInfo) error {
 		}
 		decoder := json.NewDecoder(res.Body)
 		defer res.Body.Close()
-		if res.StatusCode == http.StatusOK {
+		if res.StatusCode == http.StatusCreated {
 			var r *util.RefreshInfo
 			err = decoder.Decode(&r)
 			if err != nil {
