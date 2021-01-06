@@ -32,7 +32,7 @@ func RetrieveCredentials() (*Credentials, error) {
 }
 
 // PostRequest generic http post request
-func PostRequest(url string, postData map[string]interface{}) (*http.Response, error) {
+func PostRequest(url string, authInfo *AuthInfo, postData map[string]interface{}) (*http.Response, error) {
 	postBody, err := json.Marshal(postData)
 	if err != nil {
 		return nil, err
@@ -43,6 +43,11 @@ func PostRequest(url string, postData map[string]interface{}) (*http.Response, e
 	}
 	req.Header.Add("Accept", "application/json")
 	req.Header.Add("Content-Type", "application/json")
+
+	// add authentication information to header if needed
+	if authInfo != nil {
+		req.Header.Add("Authorization", "Bearer "+authInfo.AccessToken)
+	}
 
 	return http.DefaultClient.Do(req)
 }
