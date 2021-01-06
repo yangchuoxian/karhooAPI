@@ -1,0 +1,98 @@
+{
+    "agent": {
+        "organisation_id": "7ddd92f8-ea2b-4a03-89d5-48319ba00986",
+        "organisation_name": "KarhooQuotePredictionTesting",
+        "user_id": "db4bfff8-4270-4dee-a44b-03f40c5017c0",
+        "user_name": "Robbie Yang"
+    },
+    "date_booked": "2021-01-06T05:56:39Z",
+    "date_scheduled": "2021-01-06T05:56:39Z",
+    "destination": {
+        "display_address": "Some place nearby",
+        "place_id": "o_N1776298431",
+        "poi_type": "NOT_SET_POI_TYPE",
+        "position": {
+            "latitude": 51.03022,
+            "longitude": 8.905488
+        },
+        "timezone": "Europe/Berlin"
+    },
+    "display_trip_id": "EB2A-98F7",
+    "fare": {
+        "breakdown": [
+            {
+                "value": 1030,
+                "name": "Basic amount",
+                "description": "Basic amount before any taxes or extras"
+            }
+        ],
+        "currency": "GBP",
+        "total": 0
+    },
+    "fleet_info": {
+        "fleet_id": "d5905a3d-da80-45dc-bdf2-903ea9ea2235"
+    },
+    "id": "71ffc769-f6bb-4a77-b87d-443feb2a98f7",
+    "meeting_point": {
+        "position": {
+            "latitude": 0,
+            "longitude": 0
+        },
+        "type": "NOT_SET"
+    },
+    "origin": {
+        "display_address": "Frankfurt Airport",
+        "place_id": "o_N4899715253",
+        "poi_type": "NOT_SET_POI_TYPE",
+        "position": {
+            "latitude": 50.041153,
+            "longitude": 8.558967
+        },
+        "timezone": "Europe/Berlin"
+    },
+    "passengers": {
+        "luggage": {
+            "total": 1
+        },
+        "passenger_details": [
+            {
+                "first_name": "Chuoxian",
+                "last_name": "Yang",
+                "phone_number": "+15005550006"
+            }
+        ]
+    },
+    "quote": {
+        "breakdown": [
+            {
+                "value": 1030,
+                "name": "Basic amount",
+                "description": "Basic amount before any taxes or extras"
+            }
+        ],
+        "currency": "GBP",
+        "high_price": 1711,
+        "low_price": 1711,
+        "qta_high_minutes": 2,
+        "qta_low_minutes": 2,
+        "source": "FLEET",
+        "total": 1711,
+        "type": "FIXED",
+        "vehicle_attributes": {
+            "luggage_capacity": 2,
+            "passenger_capacity": 4
+        },
+        "vehicle_class": "saloon"
+    },
+    "status": "REQUESTED",
+    "vehicle": {
+        "attributes": {},
+        "driver": {
+            "first_name": "",
+            "last_name": "",
+            "phone_number": ""
+        },
+        "vehicle_class": "saloon",
+        "vehicle_license_plate": ""
+    }
+}

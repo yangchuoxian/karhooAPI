@@ -3,6 +3,7 @@ package util
 import (
 	"bytes"
 	"encoding/json"
+	"log"
 	"net/http"
 	"os"
 
@@ -50,4 +51,29 @@ func PostRequest(url string, authInfo *AuthInfo, postData map[string]interface{}
 	}
 
 	return http.DefaultClient.Do(req)
+}
+
+// GetRequest generic http get request
+func GetRequest(url string, authInfo *AuthInfo) (*http.Response, error) {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("Content-Type", "application/json")
+
+	// add authentication information to header if needed
+	if authInfo != nil {
+		req.Header.Add("Authorization", "Bearer "+authInfo.AccessToken)
+	}
+
+	return http.DefaultClient.Do(req)
+}
+
+// PrintStruct prints out a struct in a json human readable format
+func PrintStruct(s interface{}) {
+	m, err := json.MarshalIndent(s, "", "	")
+	if err == nil {
+		log.Println(string(m))
+	}
 }

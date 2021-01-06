@@ -1,0 +1,70 @@
+{
+    "id": "79316201-f007-451e-8af3-350b3c628214",
+    "availability": {
+        "vehicles": {
+            "classes": [
+                "Saloon",
+                "MVP",
+                "Taxi"
+            ],
+            "tags": [
+                "child-seat",
+                "hybrid",
+                "electric"
+            ],
+            "types": [
+                "standard",
+                "mpv",
+                "bus"
+            ]
+        }
+    },
+    "quotes": [
+        {
+            "id": "9361d590-7472-11e8-82da-0a580a2c041d:NDgyOWY0MjctZmI4MC00OWQxLWFlZDUtY2U5ZmFiNGI1MjM1O3RheGk=",
+            "price": {
+                "currency_code": "GBP",
+                "high": 1500,
+                "low": 1500,
+                "net": {
+                    "high": 1350,
+                    "low": 900
+                }
+            },
+            "pick_up_type": "MEET_AND_GREET",
+            "quote_type": "string",
+            "source": "FLEET",
+            "fleet": {
+                "id": "385468a9-98fb-4267-a6c8-e324dee13714",
+                "name": "Karhoo Cabs",
+                "description": "This fleet offers great discounts in the evening",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://karhoo.com/logo/cab.png",
+                "terms_conditions_url": "https://karhoo.com/terms/",
+                "phone_number": "+44123456789",
+                "capabilities": [
+                    "gps_tracking",
+                    "vehicle_details"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 5,
+                    "low_minutes": 2
+                },
+                "class": "Saloon",
+                "type": "standard",
+                "passenger_capacity": 3,
+                "luggage_capacity": 2,
+                "tags": [
+                    "electric"
+                ]
+            }
+        }
+    ],
+    "status": "COMPLETED",
+    "validity": 0
+}

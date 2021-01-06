@@ -12,17 +12,17 @@ import (
 )
 
 func main() {
-	// get access token
+	// ****************************** get access token
 	authInfo, err := getAccessToken()
 	if err != nil {
 		log.Fatal(err)
 	}
-	// refresh access token if necessary
+	// ****************************** refresh access token if necessary
 	err = refreshAccessTokenIfExpired(authInfo)
 	if err != nil {
 		log.Fatal(err)
 	}
-	// get quotes
+	// ****************************** request quotes
 	origin := util.Geolocation{
 		Latitude:       "50.037933",
 		Longitude:      "8.562152",
@@ -33,12 +33,52 @@ func main() {
 		Longitude:      "8.910231",
 		DisplayAddress: "Some place nearby",
 	}
-	quotes, err := getQuotes(authInfo, origin, destination, "")
+	quotesList, err := getQuotes(authInfo, origin, destination, "")
 	if err != nil {
 		log.Fatal(err)
 	}
-	quotesInJSON, _ := json.MarshalIndent(quotes, "", "	")
-	fmt.Println(string(quotesInJSON))
+	// ****************************** retrieve quote list
+	retrievedQuoteList, err := retrieveQuoteList(authInfo, quotesList.ID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if len(retrievedQuoteList.Quotes) == 0 {
+		log.Fatal("failed to request quotes")
+	}
+	log.Println("********************* RETRIEVED QUOTE LIST: ")
+	util.PrintStruct(retrievedQuoteList)
+	// ****************************** select the first quote from quote list and make a booking
+	bookingResults, err := bookATrip(authInfo, map[string]interface{}{
+		"quote_id": retrievedQuoteList.Quotes[0].ID,
+		"passengers": map[string]interface{}{
+			"passenger_details": []map[string]interface{}{{
+				"first_name":   "Chuoxian",
+				"last_name":    "Yang",
+				"phone_number": "+15005550006",
+			}},
+			"luggage": map[string]interface{}{
+				"total": 1,
+			},
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("********************* REQUESTED A BOOKING: ")
+	util.PrintStruct(bookingResults)
+	// ****************************** get booking details of previous book request
+	bookingDetails, err := getBookingDetails(authInfo, bookingResults.ID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("********************* GOT BOOKING DETAILS: ")
+	util.PrintStruct(bookingDetails)
+	// ****************************** cancel booking
+	err = cancelBooking(authInfo, bookingDetails.ID, util.CancelBookingReasons[0])
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("********************* BOOKING %s CANCELED SUCCESSFULLY", bookingDetails.ID)
 }
 
 func getAccessToken() (*util.AuthInfo, error) {
@@ -109,7 +149,7 @@ func refreshAccessTokenIfExpired(a *util.AuthInfo) error {
 	return nil
 }
 
-func getQuotes(a *util.AuthInfo, origin util.Geolocation, destination util.Geolocation, pickupTime string) (*util.Quotes, error) {
+func getQuotes(a *util.AuthInfo, origin util.Geolocation, destination util.Geolocation, pickupTime string) (*util.QuotesList, error) {
 	res, err := util.PostRequest(util.GetQuotesURL, a, map[string]interface{}{
 		"origin":               origin,
 		"destination":          destination,
@@ -121,12 +161,12 @@ func getQuotes(a *util.AuthInfo, origin util.Geolocation, destination util.Geolo
 	decoder := json.NewDecoder(res.Body)
 	defer res.Body.Close()
 	if res.StatusCode == http.StatusCreated {
-		var quotes *util.Quotes
-		err = decoder.Decode(&quotes)
+		var quotesList *util.QuotesList
+		err = decoder.Decode(&quotesList)
 		if err != nil {
 			return nil, err
 		}
-		return quotes, nil
+		return quotesList, nil
 	}
 	// get quote failed with code and error message
 	var e *util.ErrorInfo
@@ -135,4 +175,98 @@ func getQuotes(a *util.AuthInfo, origin util.Geolocation, destination util.Geolo
 		return nil, err
 	}
 	return nil, errors.New(e.Message)
+}
+
+func retrieveQuoteList(a *util.AuthInfo, quoteListID string) (*util.QuotesList, error) {
+	res, err := util.GetRequest(util.RetrieveQuoteList+quoteListID, a)
+	if err != nil {
+		return nil, err
+	}
+	decoder := json.NewDecoder(res.Body)
+	defer res.Body.Close()
+	if res.StatusCode == http.StatusOK {
+		var quotesList *util.QuotesList
+		err = decoder.Decode(&quotesList)
+		if err != nil {
+			return nil, err
+		}
+		return quotesList, nil
+	}
+	// retrieve quote list failed with code and error message
+	var e *util.ErrorInfo
+	err = decoder.Decode(&e)
+	if err != nil {
+		return nil, err
+	}
+	return nil, errors.New(e.Message)
+}
+
+func bookATrip(a *util.AuthInfo, params map[string]interface{}) (*util.BookingDetails, error) {
+	res, err := util.PostRequest(util.BookingURL, a, params)
+	if err != nil {
+		return nil, err
+	}
+	decoder := json.NewDecoder(res.Body)
+	defer res.Body.Close()
+	if res.StatusCode == http.StatusCreated {
+		var bookingResponse *util.BookingDetails
+		err = decoder.Decode(&bookingResponse)
+		if err != nil {
+			return nil, err
+		}
+		return bookingResponse, nil
+	}
+	// book trip failed with code and error message
+	var e *util.ErrorInfo
+	err = decoder.Decode(&e)
+	if err != nil {
+		return nil, err
+	}
+	return nil, errors.New(e.Message)
+}
+
+func getBookingDetails(a *util.AuthInfo, bookingID string) (*util.BookingDetails, error) {
+	res, err := util.GetRequest(util.GetBookingDetailsURL+bookingID, a)
+	if err != nil {
+		return nil, err
+	}
+	decoder := json.NewDecoder(res.Body)
+	defer res.Body.Close()
+	if res.StatusCode == http.StatusOK {
+		var bookingDetails *util.BookingDetails
+		err = decoder.Decode(&bookingDetails)
+		if err != nil {
+			return nil, err
+		}
+		return bookingDetails, nil
+	}
+	// get booking details failed with code and error message
+	var e *util.ErrorInfo
+	err = decoder.Decode(&e)
+	if err != nil {
+		return nil, err
+	}
+	return nil, errors.New(e.Message)
+}
+
+func cancelBooking(a *util.AuthInfo, bookingID, cancelReason string) error {
+	cancelBookingURL := fmt.Sprintf(util.CancelBookingURL, bookingID)
+	res, err := util.PostRequest(cancelBookingURL, a, map[string]interface{}{
+		"reason": cancelReason,
+	})
+	if err != nil {
+		return err
+	}
+	if res.StatusCode == http.StatusNoContent {
+		return nil
+	}
+	// cancel booking failed with code and error message
+	decoder := json.NewDecoder(res.Body)
+	defer res.Body.Close()
+	var e *util.ErrorInfo
+	err = decoder.Decode(&e)
+	if err != nil {
+		return err
+	}
+	return errors.New(e.Message)
 }
