@@ -1,0 +1,481 @@
+{
+    "id": "b6e18091-500a-11eb-b680-d6c5ead457ac",
+    "availability": {
+        "vehicles": {
+            "classes": [
+                "Saloon",
+                "Exec",
+                "MPV",
+                "Electric",
+                "Taxi"
+            ],
+            "tags": [
+                "executive",
+                "electric",
+                "taxi"
+            ],
+            "types": [
+                "standard",
+                "mpv"
+            ]
+        }
+    },
+    "quotes": [
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:ZDU5MDVhM2QtZGE4MC00NWRjLWJkZjItOTAzZWE5ZWEyMjM1O21wdjttcHY7",
+            "price": {
+                "currency_code": "GBP",
+                "high": 2701,
+                "low": 2701,
+                "net": {
+                    "high": 2455,
+                    "low": 2455
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "FIXED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "d5905a3d-da80-45dc-bdf2-903ea9ea2235",
+                "name": "Global PHV (Robot Fleet WWW)",
+                "description": "Robot PHV Fleet operating globally. Example description: Regional Private Hire Company operating in London and surroundings.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/c3b7b3b09b7d8278ba5ac467880a0535.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/d3b42f33-fbe6-4e63-9028-3fc7a56ada0e/index.html",
+                "phone_number": "+448000000000",
+                "capabilities": [
+                    "gps_tracking",
+                    "train_tracking",
+                    "vehicle_details",
+                    "driver_details",
+                    "flight_tracking"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "MPV",
+                "type": "mpv",
+                "passenger_capacity": 6,
+                "luggage_capacity": 2,
+                "tags": []
+            }
+        },
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:Y2M5NGRkMGUtOThjZS00NjNjLTlkYzQtM2ZlZDJlOTQ3ZGEyO2V4ZWN1dGl2ZTtzdGFuZGFyZDtleGVjdXRpdmU=",
+            "price": {
+                "currency_code": "GBP",
+                "high": 25915,
+                "low": 25915,
+                "net": {
+                    "high": 23559,
+                    "low": 23559
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "METERED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "cc94dd0e-98ce-463c-9dc4-3fed2e947da2",
+                "name": "Global Taxi (Robot Fleet WWW)",
+                "description": "Robot Taxi Fleet covering the world. Example description: Local Taxi operating in London and surroundings.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/39e5726a81e8a132fe31d852e35be919.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/d3b42f33-fbe6-4e63-9028-3fc7a56ada0e/index.html",
+                "phone_number": "+448000000000",
+                "capabilities": [
+                    "driver_details",
+                    "flight_tracking",
+                    "gps_tracking",
+                    "train_tracking",
+                    "vehicle_details"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "Exec",
+                "type": "standard",
+                "passenger_capacity": 3,
+                "luggage_capacity": 2,
+                "tags": [
+                    "executive"
+                ]
+            }
+        },
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:OTFkNmNiZWEtMDllMC00MzVkLTlkODctMDM5NWU0Y2MzY2M1O3NhbG9vbjtzdGFuZGFyZDs=",
+            "price": {
+                "currency_code": "GBP",
+                "high": 2728,
+                "low": 2728,
+                "net": {
+                    "high": 2480,
+                    "low": 2480
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "FIXED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "91d6cbea-09e0-435d-9d87-0395e4cc3cc5",
+                "name": "Will Always Decline (Robot Fleet)",
+                "description": "This Fleet will always decline a booking.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/7c4cb271d1a952936cb4eb4410470a17.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/bea1240a-c4b7-4746-8353-83a253042c2e/index.html",
+                "phone_number": "+44800000000",
+                "capabilities": []
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "Saloon",
+                "type": "standard",
+                "passenger_capacity": 3,
+                "luggage_capacity": 3,
+                "tags": []
+            }
+        },
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:ZDU5MDVhM2QtZGE4MC00NWRjLWJkZjItOTAzZWE5ZWEyMjM1O3NhbG9vbjtzdGFuZGFyZDs=",
+            "price": {
+                "currency_code": "GBP",
+                "high": 1711,
+                "low": 1711,
+                "net": {
+                    "high": 1555,
+                    "low": 1555
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "FIXED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "d5905a3d-da80-45dc-bdf2-903ea9ea2235",
+                "name": "Global PHV (Robot Fleet WWW)",
+                "description": "Robot PHV Fleet operating globally. Example description: Regional Private Hire Company operating in London and surroundings.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/c3b7b3b09b7d8278ba5ac467880a0535.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/d3b42f33-fbe6-4e63-9028-3fc7a56ada0e/index.html",
+                "phone_number": "+448000000000",
+                "capabilities": [
+                    "train_tracking",
+                    "vehicle_details",
+                    "driver_details",
+                    "flight_tracking",
+                    "gps_tracking"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "Saloon",
+                "type": "standard",
+                "passenger_capacity": 4,
+                "luggage_capacity": 2,
+                "tags": []
+            }
+        },
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:Y2M5NGRkMGUtOThjZS00NjNjLTlkYzQtM2ZlZDJlOTQ3ZGEyO2VsZWN0cmljO3N0YW5kYXJkO2VsZWN0cmlj",
+            "price": {
+                "currency_code": "GBP",
+                "high": 14648,
+                "low": 14648,
+                "net": {
+                    "high": 13316,
+                    "low": 13316
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "METERED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "cc94dd0e-98ce-463c-9dc4-3fed2e947da2",
+                "name": "Global Taxi (Robot Fleet WWW)",
+                "description": "Robot Taxi Fleet covering the world. Example description: Local Taxi operating in London and surroundings.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/39e5726a81e8a132fe31d852e35be919.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/d3b42f33-fbe6-4e63-9028-3fc7a56ada0e/index.html",
+                "phone_number": "+448000000000",
+                "capabilities": [
+                    "vehicle_details",
+                    "driver_details",
+                    "flight_tracking",
+                    "gps_tracking",
+                    "train_tracking"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "Electric",
+                "type": "standard",
+                "passenger_capacity": 2,
+                "luggage_capacity": 2,
+                "tags": [
+                    "electric"
+                ]
+            }
+        },
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:Y2M5NGRkMGUtOThjZS00NjNjLTlkYzQtM2ZlZDJlOTQ3ZGEyO21wdjttcHY7",
+            "price": {
+                "currency_code": "GBP",
+                "high": 25915,
+                "low": 25915,
+                "net": {
+                    "high": 23559,
+                    "low": 23559
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "METERED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "cc94dd0e-98ce-463c-9dc4-3fed2e947da2",
+                "name": "Global Taxi (Robot Fleet WWW)",
+                "description": "Robot Taxi Fleet covering the world. Example description: Local Taxi operating in London and surroundings.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/39e5726a81e8a132fe31d852e35be919.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/d3b42f33-fbe6-4e63-9028-3fc7a56ada0e/index.html",
+                "phone_number": "+448000000000",
+                "capabilities": [
+                    "flight_tracking",
+                    "gps_tracking",
+                    "train_tracking",
+                    "vehicle_details",
+                    "driver_details"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "MPV",
+                "type": "mpv",
+                "passenger_capacity": 6,
+                "luggage_capacity": 2,
+                "tags": []
+            }
+        },
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:ZDU5MDVhM2QtZGE4MC00NWRjLWJkZjItOTAzZWE5ZWEyMjM1O2V4ZWN1dGl2ZTtzdGFuZGFyZDtleGVjdXRpdmU=",
+            "price": {
+                "currency_code": "GBP",
+                "high": 2340,
+                "low": 2340,
+                "net": {
+                    "high": 2127,
+                    "low": 2127
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "FIXED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "d5905a3d-da80-45dc-bdf2-903ea9ea2235",
+                "name": "Global PHV (Robot Fleet WWW)",
+                "description": "Robot PHV Fleet operating globally. Example description: Regional Private Hire Company operating in London and surroundings.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/c3b7b3b09b7d8278ba5ac467880a0535.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/d3b42f33-fbe6-4e63-9028-3fc7a56ada0e/index.html",
+                "phone_number": "+448000000000",
+                "capabilities": [
+                    "driver_details",
+                    "flight_tracking",
+                    "gps_tracking",
+                    "train_tracking",
+                    "vehicle_details"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "Exec",
+                "type": "standard",
+                "passenger_capacity": 3,
+                "luggage_capacity": 2,
+                "tags": [
+                    "executive"
+                ]
+            }
+        },
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:ZDU5MDVhM2QtZGE4MC00NWRjLWJkZjItOTAzZWE5ZWEyMjM1O2VsZWN0cmljO3N0YW5kYXJkO2VsZWN0cmlj",
+            "price": {
+                "currency_code": "GBP",
+                "high": 1170,
+                "low": 1170,
+                "net": {
+                    "high": 1064,
+                    "low": 1064
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "FIXED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "d5905a3d-da80-45dc-bdf2-903ea9ea2235",
+                "name": "Global PHV (Robot Fleet WWW)",
+                "description": "Robot PHV Fleet operating globally. Example description: Regional Private Hire Company operating in London and surroundings.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/c3b7b3b09b7d8278ba5ac467880a0535.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/d3b42f33-fbe6-4e63-9028-3fc7a56ada0e/index.html",
+                "phone_number": "+448000000000",
+                "capabilities": [
+                    "vehicle_details",
+                    "driver_details",
+                    "flight_tracking",
+                    "gps_tracking",
+                    "train_tracking"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "Electric",
+                "type": "standard",
+                "passenger_capacity": 3,
+                "luggage_capacity": 1,
+                "tags": [
+                    "electric"
+                ]
+            }
+        },
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:Y2M5NGRkMGUtOThjZS00NjNjLTlkYzQtM2ZlZDJlOTQ3ZGEyO3NhbG9vbjtzdGFuZGFyZDs=",
+            "price": {
+                "currency_code": "GBP",
+                "high": 16902,
+                "low": 16902,
+                "net": {
+                    "high": 15365,
+                    "low": 15365
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "METERED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "cc94dd0e-98ce-463c-9dc4-3fed2e947da2",
+                "name": "Global Taxi (Robot Fleet WWW)",
+                "description": "Robot Taxi Fleet covering the world. Example description: Local Taxi operating in London and surroundings.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/39e5726a81e8a132fe31d852e35be919.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/d3b42f33-fbe6-4e63-9028-3fc7a56ada0e/index.html",
+                "phone_number": "+448000000000",
+                "capabilities": [
+                    "driver_details",
+                    "flight_tracking",
+                    "gps_tracking",
+                    "train_tracking",
+                    "vehicle_details"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "Saloon",
+                "type": "standard",
+                "passenger_capacity": 4,
+                "luggage_capacity": 2,
+                "tags": []
+            }
+        },
+        {
+            "id": "b6e18091-500a-11eb-b680-d6c5ead457ac:Y2M5NGRkMGUtOThjZS00NjNjLTlkYzQtM2ZlZDJlOTQ3ZGEyO3RheGk7c3RhbmRhcmQ7dGF4aQ==",
+            "price": {
+                "currency_code": "GBP",
+                "high": 14648,
+                "low": 14648,
+                "net": {
+                    "high": 13316,
+                    "low": 13316
+                }
+            },
+            "pick_up_type": "DEFAULT",
+            "quote_type": "METERED",
+            "source": "FLEET",
+            "fleet": {
+                "id": "cc94dd0e-98ce-463c-9dc4-3fed2e947da2",
+                "name": "Global Taxi (Robot Fleet WWW)",
+                "description": "Robot Taxi Fleet covering the world. Example description: Local Taxi operating in London and surroundings.",
+                "rating": {
+                    "count": 0,
+                    "score": 0
+                },
+                "logo_url": "https://cdn.karhoo.com/d/images/organisation-logos/39e5726a81e8a132fe31d852e35be919.png",
+                "terms_conditions_url": "https://cdn.karhoo.com/d/terms/fleets/d3b42f33-fbe6-4e63-9028-3fc7a56ada0e/index.html",
+                "phone_number": "+448000000000",
+                "capabilities": [
+                    "vehicle_details",
+                    "driver_details",
+                    "flight_tracking",
+                    "gps_tracking",
+                    "train_tracking"
+                ]
+            },
+            "vehicle": {
+                "qta": {
+                    "high_minutes": 2,
+                    "low_minutes": 2
+                },
+                "class": "Taxi",
+                "type": "standard",
+                "passenger_capacity": 4,
+                "luggage_capacity": 2,
+                "tags": [
+                    "taxi"
+                ]
+            }
+        }
+    ],
+    "status": "COMPLETED",
+    "validity": 299
+}
