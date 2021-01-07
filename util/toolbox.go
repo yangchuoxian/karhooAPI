@@ -71,7 +71,7 @@ func GetRequest(url string, authInfo *AuthInfo) (*http.Response, error) {
 }
 
 // PrintStruct prints out a struct in a json human readable format
-func PrintStruct(s interface{}) {
+func PrintInterface(s interface{}) {
 	m, err := json.MarshalIndent(s, "", "	")
 	if err == nil {
 		log.Println(string(m))

@@ -33,7 +33,7 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("********************* REGISTERED WEBHOOK: ")
-	util.PrintStruct(subscriptions)
+	util.PrintInterface(subscriptions)
 	// ****************************** request quotes
 	origin := util.Geolocation{
 		Latitude:       "50.037933",
@@ -58,10 +58,46 @@ func main() {
 		log.Fatal("failed to request quotes")
 	}
 	log.Println("********************* RETRIEVED QUOTE LIST: ")
-	util.PrintStruct(retrievedQuoteList)
-	// ****************************** select the first quote from quote list and make a booking
+	util.PrintInterface(retrievedQuoteList)
+	// ****************************** aggregate quotes, select the lowest price for quotes with the same vehicle.class
+	vehicleClasses := retrievedQuoteList.Availability.Vehicles.Classes
+	if vehicleClasses == nil {
+		log.Fatal("empty vehicle classes")
+	}
+	type quotePrice struct {
+		QuoteID     string
+		LowestPrice int
+	}
+	lowestPriceQuotes := map[string]quotePrice{}
+	for _, vehicleClass := range vehicleClasses {
+		lowestPriceQuotes[vehicleClass] = quotePrice{
+			QuoteID:     "",
+			LowestPrice: -1,
+		}
+	}
+	for _, quote := range retrievedQuoteList.Quotes {
+		if lowestPriceQuotes[quote.Vehicle.Class].LowestPrice == -1 ||
+			lowestPriceQuotes[quote.Vehicle.Class].LowestPrice > quote.Price.Low {
+			lowestPriceQuotes[quote.Vehicle.Class] = quotePrice{
+				QuoteID:     quote.ID,
+				LowestPrice: quote.Price.Low,
+			}
+		}
+	}
+	log.Println("********************* LOWEST PRICE QUOTES:")
+	util.PrintInterface(lowestPriceQuotes)
+	// ****************************** select the lowest price quote with some vehicle.class and make a booking
+	vehicleClass := ""
+	quoteIDToBook := ""
+	for k, v := range lowestPriceQuotes {
+		if v.LowestPrice != -1 && v.QuoteID != "" {
+			quoteIDToBook = v.QuoteID
+			vehicleClass = k
+		}
+	}
+	log.Printf("********************* BOOKING WITH VEHICLE CLASS: %s AND QUOTE ID: %s", vehicleClass, quoteIDToBook)
 	bookingResults, err := bookATrip(authInfo, map[string]interface{}{
-		"quote_id": retrievedQuoteList.Quotes[0].ID,
+		"quote_id": quoteIDToBook,
 		"passengers": map[string]interface{}{
 			"passenger_details": []map[string]interface{}{{
 				"first_name":   "Chuoxian",
@@ -77,14 +113,14 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("********************* REQUESTED A BOOKING: ")
-	util.PrintStruct(bookingResults)
+	util.PrintInterface(bookingResults)
 	// ****************************** get booking details of previous book request
 	bookingDetails, err := getBookingDetails(authInfo, bookingResults.ID)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Println("********************* GOT BOOKING DETAILS: ")
-	util.PrintStruct(bookingDetails)
+	util.PrintInterface(bookingDetails)
 	// ****************************** cancel booking
 	err = cancelBooking(authInfo, bookingDetails.ID, util.CancelBookingReasons[0])
 	if err != nil {
