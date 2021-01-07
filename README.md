@@ -1,6 +1,10 @@
-# KARHOO API get started application
+# KARHOO API Get Started Application
 
-## Questions
+## Running
 
-1. May I get username/password for the sandbox?
-2. Where do I see meanings of code like "K0002"?
+This application assumes the environment is MacOS/Linux, type 
+```shell
+cd <path-to-project>
+./start
+```
+runs the project
