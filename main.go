@@ -22,6 +22,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	// ****************************** register karhoo webhook
+	err = registerWebhook(authInfo, "http://karhoo-webhooks.piizu.com/webhook", util.WebhookSecretKey)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	subscriptions, err := getRegisteredWebhookURLs(authInfo)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("********************* REGISTERED WEBHOOK: ")
+	util.PrintStruct(subscriptions)
 	// ****************************** request quotes
 	origin := util.Geolocation{
 		Latitude:       "50.037933",
@@ -269,4 +281,50 @@ func cancelBooking(a *util.AuthInfo, bookingID, cancelReason string) error {
 		return err
 	}
 	return errors.New(e.Message)
+}
+
+func registerWebhook(a *util.AuthInfo, url, sharedSecret string) error {
+	res, err := util.PostRequest(util.RegisterWebhookURL, a, map[string]interface{}{
+		"url":           url,
+		"shared_secret": sharedSecret,
+	})
+	if err != nil {
+		return err
+	}
+	if res.StatusCode == http.StatusCreated {
+		return nil
+	}
+	// register webhook failed with code and error message
+	decoder := json.NewDecoder(res.Body)
+	defer res.Body.Close()
+	var e *util.ErrorInfo
+	err = decoder.Decode(&e)
+	if err != nil {
+		return err
+	}
+	return errors.New(e.Message)
+}
+
+func getRegisteredWebhookURLs(a *util.AuthInfo) (*util.WebhookSubscription, error) {
+	res, err := util.GetRequest(util.ReturnSubscriptionURL, a)
+	if err != nil {
+		return nil, err
+	}
+	decoder := json.NewDecoder(res.Body)
+	defer res.Body.Close()
+	if res.StatusCode == http.StatusOK {
+		var sub *util.WebhookSubscription
+		err = decoder.Decode(&sub)
+		if err != nil {
+			return nil, err
+		}
+		return sub, nil
+	}
+	// get registered webhook urls failed with code and error message
+	var e *util.ErrorInfo
+	err = decoder.Decode(&e)
+	if err != nil {
+		return nil, err
+	}
+	return nil, errors.New(e.Message)
 }

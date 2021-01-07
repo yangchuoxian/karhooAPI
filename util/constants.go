@@ -39,6 +39,11 @@ type Geolocation struct {
 	DisplayAddress string `json:"display_address"`
 }
 
+// WebhookSubscription the registered webhook url
+type WebhookSubscription struct {
+	URL string `json:"url"`
+}
+
 // QuotesList quotes
 type QuotesList struct {
 	ID           string `json:"id"`
@@ -230,6 +235,9 @@ type BookingDetails struct {
 	TrainTime time.Time `json:"train_time"`
 }
 
+// WebhookSecretKey shared secret when setting up webhook
+const WebhookSecretKey = "Jal019lafj0192QtYbNzmMAsL"
+
 const (
 	// GetAccessTokenURL url to get access token
 	GetAccessTokenURL = "https://rest.sandbox.karhoo.com/v1/auth/token"
@@ -245,6 +253,10 @@ const (
 	GetBookingDetailsURL = "https://rest.sandbox.karhoo.com/v1/bookings/"
 	// CancelBookingURL url to cancel booking
 	CancelBookingURL = "https://rest.sandbox.karhoo.com/v1/bookings/%s/cancel/"
+	// RegisterWebhookURL url to register webhook
+	RegisterWebhookURL = "https://rest.sandbox.karhoo.com/v1/webhooks/"
+	// ReturnSubscriptionURL url to return current webhook subscription for user
+	ReturnSubscriptionURL = "https://rest.sandbox.karhoo.com/v1/webhooks/"
 )
 
 // CancelBookingReasons reason strings to cancel booking
