@@ -91,8 +91,10 @@ func main() {
 	quoteIDToBook := ""
 	for k, v := range lowestPriceQuotes {
 		if v.LowestPrice != -1 && v.QuoteID != "" {
+			// choose the first quote with lowest price
 			quoteIDToBook = v.QuoteID
 			vehicleClass = k
+			break
 		}
 	}
 	log.Printf("********************* BOOKING WITH VEHICLE CLASS: %s AND QUOTE ID: %s", vehicleClass, quoteIDToBook)
